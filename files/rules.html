@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>House Prices - Advanced Regression Techniques | Kaggle</title>
+  <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+  <meta name="description" content="Predict sales prices and practice feature engineering, RFs, and gradient boosting" />
+  <meta name="turbolinks-cache-control" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+  <meta name="theme-color" content="#008ABC" />
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" type="text/javascript">
+    window["pageRequestStartTime"] = 1714117468430;
+    window["pageRequestEndTime"] = 1714117468440;
+    window["initialPageLoadStartTime"] = new Date().getTime();
+  </script>
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" id="gsi-client" src="https://accounts.google.com/gsi/client" async defer></script>
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==">window.KAGGLE_JUPYTERLAB_PATH = "/static/assets/jupyterlab/jupyterlab-index-c54f6fcdc74252eb7b16.html";</script>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" /><link rel="preconnect" href="https://stats.g.doubleclick.net" /><link rel="preconnect" href="https://storage.googleapis.com" /><link rel="preconnect" href="https://apis.google.com" />
+  <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link rel="manifest" href="/static/json/manifest.json" crossorigin="use-credentials">
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,500,500i,600,600i,700,700i&display=swap"
+    rel="preload" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Symbols:FILL@0..1&display=block"
+    rel="preload" as="style" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,500,500i,600,600i,700,700i&display=swap"
+    rel="stylesheet" media="print" id="async-google-font-1" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Symbols:FILL@0..1&display=block"
+    rel="stylesheet" media="print" id="async-google-font-2" />
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" type="text/javascript">
+    const styleSheetIds = ["async-google-font-1", "async-google-font-2"];
+    styleSheetIds.forEach(function (id) {
+      document.getElementById(id).addEventListener("load", function() {
+        this.media = "all";
+      });
+    });
+  </script>
+
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" src="https://www.google.com/recaptcha/enterprise.js?render=6LcW02cpAAAAAJlaJemsQQEwAiTEYB4aR6FYE_rD&waf=session" async defer></script>
+   <style>.grecaptcha-badge { visibility: hidden; }</style>
+
+    <link rel="stylesheet" type="text/css" href="/static/assets/vendor.css?v=dne" />
+    <link rel="stylesheet" type="text/css" href="/static/assets/app.css?v=d6bbba0cd8479c37533f" />
+
+  
+    
+ 
+      <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==">
+        try{(function(a,s,y,n,c,h,i,d,e){d=s.createElement("style");
+        d.appendChild(s.createTextNode(""));s.head.appendChild(d);d=d.sheet;
+        y=y.map(x => d.insertRule(x + "{ opacity: 0 !important }"));
+        h.start=1*new Date;h.end=i=function(){y.forEach(x => x<d.cssRules.length ? d.deleteRule(x) : {})};
+        (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+        })(window,document,['.site-header-react__nav'],'dataLayer',2000,{'GTM-52LNT9S':true});}catch(ex){}
+    </script>
+    <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-T7QHS60L4Q', {
+            'optimize_id': 'GTM-52LNT9S',
+            'displayFeaturesTask': null,
+            'send_page_view': false,
+            'content_group1': 'Competitions'
+        });
+    </script>
+    <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" async src="https://www.googletagmanager.com/gtag/js?id=G-T7QHS60L4Q"></script>
+
+  
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@kaggle" />
+        <meta name="twitter:creator" content="@kaggle" />
+        <meta name="og:url" content="https://kaggle.com/competitions/house-prices-advanced-regression-techniques" />
+    <meta name="og:title" content="House Prices - Advanced Regression Techniques" />
+    <meta name="og:description" content="Predict sales prices and practice feature engineering, RFs, and gradient boosting" />
+
+
+  <meta name="twitter:site" content="@Kaggle" /> 
+  
+    
+
+  
+    
+
+  
+    
+
+
+    <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==">window['useKaggleAnalytics'] = true;</script>
+
+  <script id="gapi-target" nonce="Fe3YFmQAcBhGyEzEnW0O3g==" src="https://apis.google.com/js/api.js" defer
+    async></script>
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" src="/static/assets/runtime.js?v=2c525e0239be2bb308ff" data-turbolinks-track="reload"></script>
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" src="/static/assets/vendor.js?v=9925b8eba14808988f27" data-turbolinks-track="reload"></script>
+  <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" src="/static/assets/app.js?v=ec2ec08306259a0f9e0d" data-turbolinks-track="reload"></script>
+    <script nonce="Fe3YFmQAcBhGyEzEnW0O3g==" type="text/javascript">
+      window.kaggleStackdriverConfig = {
+        key: 'AIzaSyA4eNqUdRRskJsCZWVz-qL655Xa5JEMreE',
+        projectId: 'kaggle-161607',
+        service: 'web-fe',
+        version: 'ci',
+        userId: '13317386'
+      }
+    </script>
+</head>
+
+<body data-turbolinks="false">
+  <main>
+    
+
+
+
+
+
+<div id="site-container"></div>
+
+<div id="site-body" class="hide">
+    
+
+
+</div>
+
+
+
+    <!-- Cheers, web-b79ddb8-9nnwqp. -->
+
+  </main>
+</body>
+
+</html>
