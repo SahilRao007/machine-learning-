@@ -61,7 +61,6 @@ Logistic Regression model accuracy: 95.00%
 
 
 
-## ✨ Author
 
 Developed as a **beginner-friendly ML project** to demonstrate how to build and evaluate a simple classification model.
 
